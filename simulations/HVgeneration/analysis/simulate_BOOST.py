@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+import os
 import sys
 sys.path.append("../../PyLTSpice")
 
@@ -32,6 +33,15 @@ def processing_data(raw_filename, log_filename):
     frequency = np.append(frequency, log_info.dataset["f"])
     dutycycle = np.append(dutycycle, log_info.dataset["d"])
     uoutmax   = np.append(uoutmax,   log_info.dataset["uoutmax"])
+
+    # we no longer need the simulation output, so we can delete the files
+    prefix = log_filename.split('.log')[0]
+    for ending in ['raw','net','op.raw','log']:
+        try:
+            os.remove(prefix + '.' + ending)
+        except Exception as e:
+            print(e)
+            pass
 
 LTC = LTSpiceBatch.SimCommander(
         "../BoostConverter.asc",    # path to LTspice simulation file
