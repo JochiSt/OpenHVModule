@@ -1,0 +1,3 @@
+[submodule "simulations/PyLTSpice"]
+	path = simulations/PyLTSpice
+	url = https://github.com/nunobrum/PyLTSpice.git
