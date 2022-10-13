@@ -49,15 +49,14 @@ LTC = LTSpiceBatch.SimCommander(
         )
 LTC.set_parameters(temp=40)         # Sets the simulation temperature
 
+#        LTC.set_component_value('R1', res_value)  #  Updates the resistor R1 value to be 3.3k
+
 for duty in np.linspace(20, 90, 10):
     for freq in np.linspace(50e3, 500e3, 10):
         print("Simulating frequency:", freq , "Hz + dutycycle:", duty , "%")
 
         LTC.set_parameter("duty", duty)
         LTC.set_parameter("frequency", freq)
-
-#        LTC.set_component_value('R1', res_value)  #  Updates the resistor R1 value to be 3.3k
-
         LTC.run(callback=processing_data)
 
 LTC.wait_completion()  # Waits for the LTSpice simulations to complete
