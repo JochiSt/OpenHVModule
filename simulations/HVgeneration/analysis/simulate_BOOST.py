@@ -5,7 +5,11 @@ import os
 import sys
 sys.path.append("../../PyLTSpice")
 
+# import PyLTSpice from local git submodule
 from PyLTSpice import LTSpiceBatch, LTSteps
+# documentation available at
+#   - https://pyltspice.readthedocs.io/en/latest/index.html
+#   - https://github.com/nunobrum/PyLTSpice.git
 
 # store the simulation results
 frequency = np.array([])
